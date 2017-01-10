@@ -1,6 +1,4 @@
-﻿using Autofac;
-using Autofac.Integration.Mvc;
-using Autofac.Integration.WebApi;
+﻿
 using SuiteSolution.Core.Data;
 using SuiteSolution.Core.Entities;
 using SuiteSolution.Service;
@@ -17,8 +15,7 @@ namespace SuiteSolution.WebAPI
 {
     public class AutoFacContainer
     {
-        public static IContainer Container { get; set; }
-        public object ReferencedAssemblies { get; private set; }
+       
 
         public void Initialise(HttpConfiguration config)
         {
