@@ -2,7 +2,7 @@
 
 namespace SuiteSolution.Service
 {
-    internal interface IProductExportService :IService<ProductExport>
+    public  interface IProductExportService :IService<ProductExport>
     {
     }
 }
