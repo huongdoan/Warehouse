@@ -18,5 +18,14 @@ namespace SuiteSolution.Core.Data
             Database.SetInitializer<SuiteDbContext>(null);
         }
         public IDbSet<ProductExport> ProductExports { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            base.OnModelCreating(modelBuilder);
+        }
+
+
+
     }
 }

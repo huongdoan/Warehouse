@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace SuiteSolution.Service
 {
@@ -13,7 +14,7 @@ namespace SuiteSolution.Service
         where TRepository : IGenericRepository<T>
     {
         
-        private readonly TRepository _repository;
+        public readonly TRepository _repository;
         
 
         public Service(TRepository repository)
@@ -53,6 +54,11 @@ namespace SuiteSolution.Service
         {
             foreach (var entity in entities)
                 _repository.Delete(entity);
+        }
+
+        public IEnumerable<T> Get(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = "")
+        {
+            return _repository.Get(filter, orderBy, includeProperties);
         }
     }
 }

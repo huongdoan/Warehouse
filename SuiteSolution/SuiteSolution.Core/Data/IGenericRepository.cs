@@ -20,5 +20,12 @@ namespace SuiteSolution.Core.Data
         void Delete(T entityToDelete);
         void Update(T entityToUpdate);
         void SaveChanges();
+
+        // Property declaration:
+        SuiteDbContext Context
+        {
+            get;
+            set;
+        }
     }
 }

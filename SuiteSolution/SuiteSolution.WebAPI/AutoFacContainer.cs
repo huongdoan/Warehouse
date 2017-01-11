@@ -1,4 +1,7 @@
 ﻿
+using Autofac;
+using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 using SuiteSolution.Core.Data;
 using SuiteSolution.Core.Entities;
 using SuiteSolution.Service;
@@ -21,8 +24,13 @@ namespace SuiteSolution.WebAPI
         {
 
             var builder = new ContainerBuilder();
-            builder.RegisterFilterProvider();
-            builder.Register<DbContext>(b =>
+
+            //Controller
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            //builder.RegisterControllers(Assembly.GetExecutingAssembly());
+
+            //builder.RegisterFilterProvider();
+            builder.Register<SuiteDbContext>(b =>
             {
                 var context = new SuiteDbContext();
                 return context;
@@ -42,16 +50,21 @@ namespace SuiteSolution.WebAPI
                 AsImplementedInterfaces().
                 InstancePerLifetimeScope();
             builder.RegisterGeneric(typeof(Service<,>)).As(typeof(IService<>)).InstancePerDependency();
+            //builder.RegisterType<ProductExportService>().As<IProductExportService>().InstancePerRequest();
+
+            //builder.RegisterType<TestService>().As<ITestService>().InstancePerRequest();
 
 
-            //Controller
-            builder.RegisterApiControllers(Assembly.Load("SuiteSolution.WebAPI"));
 
             var container = builder.Build();
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
             var resolver = new AutofacWebApiDependencyResolver(container);
-            config.DependencyResolver = resolver;
+            // Set the dependency resolver for Web API.
+            GlobalConfiguration.Configuration.DependencyResolver = resolver;
+
+            // Set MVC DI resolver to use our Autofac container
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            //config.DependencyResolver = resolver;
         }
 
      

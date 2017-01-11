@@ -1,4 +1,5 @@
-﻿using SuiteSolution.Service;
+﻿using SuiteSolution.Core.Entities;
+using SuiteSolution.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,23 +9,27 @@ using System.Web.Http;
 
 namespace SuiteSolution.WebAPI.Controllers
 {
-
-    [RoutePrefix("api/Export")]
     public class ProductExportController : ApiController
     {
 
         private readonly IProductExportService _productExportService;
+        private readonly ITestService _testService;
 
-        public ProductExportController(IProductExportService productService)
+
+        public ProductExportController(IProductExportService productExportService)
         {
-            _productExportService = productService;
+            _productExportService = productExportService;
         }
 
+        //public ProductExportController(ITestService testService)
+        //{
+        //    _testService = testService;
+        //}
 
         // GET: api/ProductExport
-        public IEnumerable<string> Get()
+        public IEnumerable<ProductExport> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _productExportService.Get();
         }
 
         // GET: api/ProductExport/5

@@ -43,8 +43,10 @@
     <Compile Include="BaseService.cs" />
     <Compile Include="IProductExportService.cs" />
     <Compile Include="IService.cs" />
+    <Compile Include="ITestService.cs" />
     <Compile Include="ProductExportService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SuiteSolution.Core\SuiteSolution.Core.csproj">

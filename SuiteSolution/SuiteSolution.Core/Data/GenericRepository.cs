@@ -9,10 +9,25 @@ using System.Threading.Tasks;
 
 namespace SuiteSolution.Core.Data
 {
-    public abstract class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity , new()
+    public  class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity , new()
     {
+       
         internal SuiteDbContext context;
         internal DbSet<TEntity> dbSet;
+
+        public SuiteDbContext Context
+        {
+            get
+            {
+                return context;
+            }
+
+            set
+            {
+               
+            }
+        }
+
         public GenericRepository(SuiteDbContext context)
         {
             this.context = context;
