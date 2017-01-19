@@ -643,6 +643,8 @@
     <Content Include="wwwroot\lib\ui-bootstrap\template\tooltip\tooltip-template-popup.html" />
     <Content Include="wwwroot\lib\ui-bootstrap\template\typeahead\typeahead-match.html" />
     <Content Include="wwwroot\lib\ui-bootstrap\template\typeahead\typeahead-popup.html" />
+    <Content Include="wwwroot\route\routeConfig.js" />
+    <Content Include="wwwroot\views\product\ProductExport.html" />
     <None Include=".bin\bower.cmd" />
     <None Include=".bin\git.cmd" />
     <None Include=".bin\node.cmd" />
@@ -940,8 +942,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="wwwroot\controllers\" />
     <Folder Include="wwwroot\directives\" />
-    <Folder Include="wwwroot\services\" />
-    <Folder Include="wwwroot\views\" />
+    <Folder Include="wwwroot\services\product\" />
+    <Folder Include="wwwroot\views\account\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
