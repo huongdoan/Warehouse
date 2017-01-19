@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <script data-main="init.js" src="lib/requirejs/require.js"></script>
+    <!--<script data-main="init.js" src="lib/requirejs/require.js"></script>-->
     <link href="lib/angular-block-ui/dist/angular-block-ui.css" rel="stylesheet" />
     <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="lib/angular-ui-grid/ui-grid.css" rel="stylesheet" />
@@ -23,7 +23,6 @@
     <div style="margin: 75px 50px 50px 50px" ng-view></div>
 
     <script language="JavaScript">
-
         function init() {
 
             setTimeout(function () {
@@ -33,5 +32,14 @@
 
         }
     </script>
+
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
+    <script src="lib/angular-ui-grid/ui-grid.js"></script>
+    <script src="app.js"></script>
+    <script src="route/routeConfig.js"></script>
+    <script src="controllers/indexController.js"></script>
+    <script src="controllers/productExportController.js"></script>
 </body>
 </html>
