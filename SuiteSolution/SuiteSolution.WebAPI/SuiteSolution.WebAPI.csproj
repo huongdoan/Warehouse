@@ -293,6 +293,8 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="wwwroot\app.js" />
+    <Content Include="wwwroot\index.html" />
+    <Content Include="wwwroot\init.js" />
     <Content Include="wwwroot\lib\angular-animate\angular-animate.js" />
     <Content Include="wwwroot\lib\angular-animate\angular-animate.min.js" />
     <Content Include="wwwroot\lib\angular-animate\index.js" />
@@ -315,6 +317,7 @@
     <Content Include="wwwroot\lib\angular-touch\angular-touch.js" />
     <Content Include="wwwroot\lib\angular-touch\angular-touch.min.js" />
     <Content Include="wwwroot\lib\angular-touch\index.js" />
+    <Content Include="wwwroot\lib\angular-ui-bootstrap-bower\.gitignore" />
     <Content Include="wwwroot\lib\angular-ui-bootstrap-bower\index.js" />
     <Content Include="wwwroot\lib\angular-ui-bootstrap-bower\ui-bootstrap-csp.css" />
     <Content Include="wwwroot\lib\angular-ui-bootstrap-bower\ui-bootstrap-tpls.js" />
@@ -446,7 +449,32 @@
     <Content Include="wwwroot\lib\jquery\src\var\support.js" />
     <Content Include="wwwroot\lib\jquery\src\var\toString.js" />
     <Content Include="wwwroot\lib\jquery\src\wrap.js" />
+    <Content Include="wwwroot\lib\requirejs-plugins\examples\async.html" />
+    <Content Include="wwwroot\lib\requirejs-plugins\examples\font.html" />
+    <Content Include="wwwroot\lib\requirejs-plugins\examples\goog.html" />
+    <Content Include="wwwroot\lib\requirejs-plugins\examples\image.html" />
+    <Content Include="wwwroot\lib\requirejs-plugins\examples\img\bike.jpg" />
+    <Content Include="wwwroot\lib\requirejs-plugins\examples\img\lol_cat.jpg" />
+    <Content Include="wwwroot\lib\requirejs-plugins\examples\img\relativePath.js" />
+    <Content Include="wwwroot\lib\requirejs-plugins\examples\img\software_engineer.png" />
+    <Content Include="wwwroot\lib\requirejs-plugins\examples\json.html" />
+    <Content Include="wwwroot\lib\requirejs-plugins\examples\mdown.html" />
+    <Content Include="wwwroot\lib\requirejs-plugins\examples\noext.html" />
+    <Content Include="wwwroot\lib\requirejs-plugins\lib\Markdown.Converter.js" />
+    <Content Include="wwwroot\lib\requirejs-plugins\lib\require.js" />
+    <Content Include="wwwroot\lib\requirejs-plugins\lib\text.js" />
+    <Content Include="wwwroot\lib\requirejs-plugins\src\async.js" />
+    <Content Include="wwwroot\lib\requirejs-plugins\src\depend.js" />
+    <Content Include="wwwroot\lib\requirejs-plugins\src\font.js" />
+    <Content Include="wwwroot\lib\requirejs-plugins\src\goog.js" />
+    <Content Include="wwwroot\lib\requirejs-plugins\src\image.js" />
+    <Content Include="wwwroot\lib\requirejs-plugins\src\json.js" />
+    <Content Include="wwwroot\lib\requirejs-plugins\src\mdown.js" />
+    <Content Include="wwwroot\lib\requirejs-plugins\src\noext.js" />
+    <Content Include="wwwroot\lib\requirejs-plugins\src\propertyParser.js" />
     <Content Include="wwwroot\lib\requirejs\require.js" />
+    <Content Include="wwwroot\lib\ui-bootstrap\.gitattributes" />
+    <Content Include="wwwroot\lib\ui-bootstrap\.gitignore" />
     <Content Include="wwwroot\lib\ui-bootstrap\Gruntfile.js" />
     <Content Include="wwwroot\lib\ui-bootstrap\index.js" />
     <Content Include="wwwroot\lib\ui-bootstrap\karma.conf.js" />
@@ -750,7 +778,6 @@
     <Content Include="wwwroot\lib\angular-touch\package.json" />
     <Content Include="wwwroot\lib\angular-touch\README.md" />
     <Content Include="wwwroot\lib\angular-ui-bootstrap-bower\.bower.json" />
-    <Content Include="wwwroot\lib\angular-ui-bootstrap-bower\.gitignore" />
     <Content Include="wwwroot\lib\angular-ui-bootstrap-bower\.npmignore" />
     <Content Include="wwwroot\lib\angular-ui-bootstrap-bower\bower.json" />
     <Content Include="wwwroot\lib\angular-ui-bootstrap-bower\package.json" />
@@ -898,15 +925,22 @@
     <Content Include="wwwroot\lib\jquery\bower.json" />
     <Content Include="wwwroot\lib\jquery\dist\jquery.min.map" />
     <Content Include="wwwroot\lib\jquery\src\sizzle\dist\sizzle.min.map" />
+    <Content Include="wwwroot\lib\requirejs-plugins\.bower.json" />
+    <Content Include="wwwroot\lib\requirejs-plugins\bower.json" />
+    <Content Include="wwwroot\lib\requirejs-plugins\examples\data\bar.json" />
+    <Content Include="wwwroot\lib\requirejs-plugins\examples\data\bar.md" />
+    <Content Include="wwwroot\lib\requirejs-plugins\examples\data\foo.json" />
+    <Content Include="wwwroot\lib\requirejs-plugins\examples\data\foo.md" />
+    <Content Include="wwwroot\lib\requirejs-plugins\examples\js\foo" />
+    <Content Include="wwwroot\lib\requirejs-plugins\examples\js\foo.bar" />
+    <Content Include="wwwroot\lib\requirejs-plugins\README.mdown" />
     <Content Include="wwwroot\lib\requirejs\.bower.json" />
     <Content Include="wwwroot\lib\requirejs\bower.json" />
     <Content Include="wwwroot\lib\requirejs\README.md" />
     <Content Include="wwwroot\lib\ui-bootstrap\.bower.json" />
     <Content Include="wwwroot\lib\ui-bootstrap\.editorconfig" />
     <Content Include="wwwroot\lib\ui-bootstrap\.eslintrc" />
-    <Content Include="wwwroot\lib\ui-bootstrap\.gitattributes" />
     <Content Include="wwwroot\lib\ui-bootstrap\.github\ISSUE_TEMPLATE.md" />
-    <Content Include="wwwroot\lib\ui-bootstrap\.gitignore" />
     <Content Include="wwwroot\lib\ui-bootstrap\.jshintrc" />
     <Content Include="wwwroot\lib\ui-bootstrap\.npmignore" />
     <Content Include="wwwroot\lib\ui-bootstrap\.travis.yml" />
@@ -940,10 +974,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\angularJsApp\" />
     <Folder Include="wwwroot\controllers\" />
     <Folder Include="wwwroot\directives\" />
     <Folder Include="wwwroot\services\product\" />
     <Folder Include="wwwroot\views\account\" />
+    <Folder Include="wwwroot\services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
