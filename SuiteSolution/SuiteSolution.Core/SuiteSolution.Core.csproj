@@ -50,9 +50,11 @@
     <Compile Include="Data\GenericRepository.cs" />
     <Compile Include="Data\IGenericRepository.cs" />
     <Compile Include="Data\SuiteDbContext.cs" />
+    <Compile Include="Entities\ApplicationMenu.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\ProductExport.cs" />
+    <Compile Include="Entities\TransactionalInformation.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

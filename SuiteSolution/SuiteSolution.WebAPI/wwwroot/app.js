@@ -7,15 +7,18 @@
             // Custom modules 
             // 3rd Party Modules
         ]);
-
-        app.config(['$httpProvider', function ($httpProvider) {
-            $httpProvider.interceptors.push('xmlHttpInteceptor');
-            if (!$httpProvider.defaults.headers.get) {
-                $httpProvider.defaults.headers.get = {};
-            }
-            $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
-            $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
-        }]);
+        app.config(function ($httpProvider) {
+            $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+            $httpProvider.defaults.withCredentials = true;
+        });
+        //app.config(['$httpProvider', function ($httpProvider) {
+        //    $httpProvider.interceptors.push('xmlHttpInteceptor');
+        //    if (!$httpProvider.defaults.headers.get) {
+        //        $httpProvider.defaults.headers.get = {};
+        //    }
+        //    $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
+        //    $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
+        //}]);
         function errorHandler(status, message) {
             var scope = angular.element($('html')).scope();
             scope.errorHandler(status, message);

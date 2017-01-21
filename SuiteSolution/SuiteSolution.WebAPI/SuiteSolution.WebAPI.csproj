@@ -239,6 +239,7 @@
     <Compile Include="AutoFacContainer.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeController.cs" />
     <Compile Include="Controllers\ProductExportController.cs" />
@@ -246,6 +247,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationApiModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MeViewModels.cs" />
@@ -293,7 +295,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="wwwroot\app.js" />
-    <Content Include="wwwroot\controllers\controller.js" />
+    <Content Include="wwwroot\controllers\defaultController.js" />
     <Content Include="wwwroot\controllers\indexController.js" />
     <Content Include="wwwroot\controllers\productExportController.js" />
     <Content Include="wwwroot\index.html" />
@@ -675,6 +677,7 @@
     <Content Include="wwwroot\lib\ui-bootstrap\template\typeahead\typeahead-match.html" />
     <Content Include="wwwroot\lib\ui-bootstrap\template\typeahead\typeahead-popup.html" />
     <Content Include="wwwroot\route\routeConfig.js" />
+    <Content Include="wwwroot\views\default.html" />
     <Content Include="wwwroot\views\product\ProductExport.html" />
     <None Include=".bin\bower.cmd" />
     <None Include=".bin\git.cmd" />

@@ -15,7 +15,7 @@ namespace SuiteSolution
     {
         public void Configuration(IAppBuilder app)
         {
-            //ConfigureAuth(app);
+            ConfigureAuth(app);
             var config = new HttpConfiguration();
             config.MapHttpAttributeRoutes();
             new AutoFacContainer().Initialise(config);

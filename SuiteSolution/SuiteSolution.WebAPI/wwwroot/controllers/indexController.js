@@ -5,9 +5,14 @@
         .module('suiteApp')
         .controller('indexController', indexController);
 
-    indexController.$inject = ['$scope', '$rootScope', '$http', '$location', 'blockUI'];
+    //indexController.$inject = ['$scope', '$rootScope', '$http', '$location', 'blockUI'];
 
     function indexController($scope, $rootScope, $http, $location, blockUI) {
+
+        $scope.initializeController = function () {
+
+            $scope.aaa = 1+1;
+        };
         $scope.$on('$routeChangeStart', function (scope, next, current) {
             if ($rootScope.IsloggedIn == true) {
                 $scope.authenicateUser($location.path(), $scope.authenicateUserComplete, $scope.authenicateUserError);
@@ -80,7 +85,10 @@
                     errorFunction(response);
                 });
             }, 1);
+        }
 
+        $scope.initializeApplicationError = function (response) {
+            alertsService.RenderErrorMessage(response.ReturnMessage);
         }
     }
 })();
