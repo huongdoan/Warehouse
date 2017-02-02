@@ -22,8 +22,8 @@ namespace SuiteSolution.Service
                 list.Add(CreateMenuItem("Home", "#Main/Home", "Main", false, 1));
                 list.Add(CreateMenuItem("Register", "#Accounts/Register", "Main", false, 3));
                 list.Add(CreateMenuItem("Login", "#Accounts/Login", "Main", false, 4));
-                list.Add(CreateMenuItem("Customer", "#Customer/", "Main", true, 5));
-                list.Add(CreateMenuItem("Product Export", "#Customer/", "Main", false, 6));
+                list.Add(CreateMenuItem("Customer", "#Customer", "Main", true, 5));
+                list.Add(CreateMenuItem("Product Export", "#/productexport", "Main", false, 6));
                 transaction.ReturnStatus = true;
             }
             catch (Exception ex)

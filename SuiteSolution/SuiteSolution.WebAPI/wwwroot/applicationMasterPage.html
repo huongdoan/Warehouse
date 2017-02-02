@@ -1,0 +1,92 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="lib/angular-block-ui/dist/angular-block-ui.css" rel="stylesheet" />
+    <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="content/Application.css" rel="stylesheet" />
+    <link href="content/SortableGrid.css" rel="stylesheet" />
+
+</head>
+<body ng-controller="indexController" ng-init="initializeController()" style="height:100%;">
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" ng-repeat="menuItem in MenuItems | filter:{Module: 'Main'}">
+                    <li><a href="{{menuItem.Route}}">{{menuItem.Description}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script language="JavaScript">
+
+        function set95PercentWidth() {
+            var viewPort = document.getElementById("ViewPort");
+            viewPort.style.width = "95%";
+        }
+
+        function set80PercentWidth() {
+
+            var viewPort = document.getElementById("ViewPort");
+            viewPort.style.width = "80%";
+        }
+
+    </script>
+
+    <div style="width: 100%; height: 100%; position: absolute; vertical-align: top; margin: 50px 0px 0px 0px">
+
+        <button class="btn btn-default" style="width: 200px; background-color: antiquewhite; border:none;" ng-show="isCollapsed" onclick="set80PercentWidth()" ng-click="isCollapsed = !isCollapsed">Show Menu>></button>
+        <button class="btn btn-default" style="width: 200px; background-color: antiquewhite; border:none;" ng-show="!isCollapsed" onclick="set95PercentWidth()" ng-click="isCollapsed = !isCollapsed;"><< Hide Menu</button>
+
+        <div style="width:100%">
+
+            <div collapse="isCollapsed" class="navbar" style="width: 200px; height:100%; vertical-align:top; margin-top:0px; margin-right:20px;background-color: antiquewhite; float:left">
+                <div style="height:1000px">
+                    <table class="table table-hover">
+                        <tr ng-repeat="menuItem in MenuItems | filter:{Module: applicationModule}">
+                            <td><a href="{{menuItem.Route}}">{{menuItem.Description}}</a></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
+            <div id="ViewPort" style="vertical-align: top; float: left; width:80%; margin: 0px 40px 40px 40px" ng-view>
+                <!-- <div style="margin: 0px 40px 40px 40px; background-color:red; float:left; display: inline-block;" ng-view></div>-->
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
+    <script src="lib/angular-ui-grid/ui-grid.js"></script>
+    <script src="lib/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
+    <script src="lib/angular-touch/angular-touch.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-block-ui/dist/angular-block-ui.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+
+    <script src="app.js"></script>
+    <script src="route/routeConfig.js"></script>
+
+    <!-- Services -->
+    <script src="services/alertsService.js"></script>
+    <script src="services/ajaxService.js"></script>
+    <script src="services/mainService.js"></script>
+
+    <!-- Controllers -->
+    <script src="controllers/indexController.js"></script>
+    <script src="controllers/defaultController.js"></script>
+    <script src="controllers/productExportController.js"></script>
+</body>
+
+</html>
+
+

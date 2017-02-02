@@ -9,14 +9,15 @@
     <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
     <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
     <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
+    <link href="content/Application.css" rel="stylesheet" />
+    <link href="content/SortableGrid.css" rel="stylesheet" />
 </head>
 <body onload="init()" ng-controller="indexController" ng-init="initializeController()" ng-cloak>
-    <div >{{aaa}}</div>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-collapse collapse" id="MainMenu" ng-show="displayContent" style="visibility:hidden">
-                <ul class="nav navbar-nav" ng-repeat="menuItem in MenuItems | filter:{Module: 'Main'}">
-                    <li><a href="{{menuItem.Route}}">{{menuItem.Description}}</a></li>
+                <ul class="nav navbar-nav" ng-repeat="menuItem in MenuItems | filter:{module: 'Main'}">
+                    <li><a href="{{menuItem.route}}">{{menuItem.description}}</a></li>
                 </ul>
             </div>
         </div>
@@ -35,18 +36,32 @@
     </script>
 
     <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
     <script src="lib/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
     <script src="lib/angular-ui-grid/ui-grid.js"></script>
-    <script src="lib/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
     <script src="lib/angular-touch/angular-touch.js"></script>
-    <script src="lib/angular-animate/angular-animate.js"></script>
     <script src="lib/angular-block-ui/dist/angular-block-ui.js"></script>
     <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="lib/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
 
     <script src="app.js"></script>
     <script src="route/routeConfig.js"></script>
+
+    <!-- Services -->
+    <script src="services/alertsService.js"></script>
+    <script src="services/ajaxService.js"></script>
+    <script src="services/mainService.js"></script>
+    <script src="services/dataGridService.js"></script>
+    <script src="services/product/productService.js"></script>
+    <script src="services/product/productExportService.js"></script>
+   
+
+    <!-- Controllers -->
     <script src="controllers/indexController.js"></script>
+    <script src="controllers/defaultController.js"></script>
     <script src="controllers/productExportController.js"></script>
+
+    
 </body>
 </html>

@@ -2,16 +2,35 @@
     'use strict';
 
     angular
-        .module('app')
-        .controller('controller', controller);
+        .module('suiteApp')
+        .controller('defaultController', defaultController);
 
-    controller.$inject = ['$scope']; 
+    defaultController.$inject = ['$scope', '$rootScope', 'mainService', 'alertsService'];
 
-    function controller($scope) {
-        $scope.title = 'controller';
+    function defaultController($scope, $rootScope, mainService, alertsService) {
+        $rootScope.closeAlert = alertsService.closeAlert;
+        $scope.initializeController = function () {
+            mainService.initializeApplication($scope.initializeApplicationComplete, $scope.initializeApplicationError);
+        }
 
-        activate();
+        $scope.initializeApplicationComplete = function (response) {
+            $rootScope.MenuItems = response.menuItems;
+            $rootScope.displayContent = true;
 
-        function activate() { }
+            //if (response.IsAuthenicated == true) {
+            //    window.location = "/#/product";
+            //}
+            //else {
+
+            //    // set timeout needed to prevent AngularJS from raising a digest error
+            //    setTimeout(function () {
+            //        window.location = "#Accounts/Login";
+            //    }, 10);
+            //}
+        }
+
+        $scope.initializeApplicationError = function (response) {
+            alertsService.RenderErrorMessage(response.ReturnMessage);
+        }
     }
 })();

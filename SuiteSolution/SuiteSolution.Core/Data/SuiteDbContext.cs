@@ -8,6 +8,7 @@ using System.Web;
 using System.Threading.Tasks;
 using System.Data.Common;
 using System.Data.Entity.Infrastructure;
+using System.Net.Http;
 
 namespace SuiteSolution.Core.Data
 {
@@ -22,7 +23,33 @@ namespace SuiteSolution.Core.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<ProductExport>().Property(p => p.RowVersion).IsConcurrencyToken();
             base.OnModelCreating(modelBuilder);
+        }
+
+        public override int SaveChanges()
+        {
+            var currentUsername = !string.IsNullOrEmpty(HttpContext.Current?.User?.Identity?.Name)
+           ? HttpContext.Current.User.Identity.Name
+           : "Anonymous";
+
+            foreach (var entry in ChangeTracker.Entries())
+            {
+                var entity = (BaseEntity)entry.Entity;
+                if (entry.State == EntityState.Added)
+                {
+                    entity.CreatedDate = DateTime.Now;
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.Id = Guid.NewGuid();
+                    entity.CreatedBy = currentUsername;
+                }
+                else if (entry.State == EntityState.Modified)
+                {
+                    entity.UpdatedDate = DateTime.Now;
+                    entity.UpdatedBy = currentUsername;
+                }
+            }
+            return base.SaveChanges();
         }
 
 

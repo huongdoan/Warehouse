@@ -4,19 +4,15 @@
     angular
         .module('suiteApp')
         .controller('indexController', indexController);
-
-    //indexController.$inject = ['$scope', '$rootScope', '$http', '$location', 'blockUI'];
+    indexController.$inject = ['$scope', '$rootScope', '$http', '$location', 'blockUI'];
 
     function indexController($scope, $rootScope, $http, $location, blockUI) {
 
-        $scope.initializeController = function () {
-
-            $scope.aaa = 1+1;
-        };
         $scope.$on('$routeChangeStart', function (scope, next, current) {
-            if ($rootScope.IsloggedIn == true) {
+            if ($rootScope.isloggedIn == true) {
                 $scope.authenicateUser($location.path(), $scope.authenicateUserComplete, $scope.authenicateUserError);
             }
+
         });
 
         $scope.$on('$routeChangeSuccess', function (scope, next, current) {
@@ -39,7 +35,7 @@
         }
 
         $scope.initializeApplicationComplete = function (response) {
-            $rootScope.MenuItems = response.MenuItems;
+            $rootScope.MenuItems = response.menuItems;
             $rootScope.displayContent = true;
             $rootScope.IsloggedIn = true;
         }
@@ -57,9 +53,8 @@
         };
 
         $scope.authenicateUserComplete = function (response) {
-
-            //if (response.IsAuthenicated == false)
-            //    window.location = "/index.html";
+            if (response.IsAuthenicated == false)
+                window.location = "/index.html";
         }
 
         $scope.authenicateUserError = function (response) {
