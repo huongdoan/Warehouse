@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SuiteXamarin"
+              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="SuiteXamarin.MainPage">
+  <StackLayout >
+    
+    <Button Text="Capture BarCode"
+               HorizontalOptions="Center"
+               VerticalOptions="CenterAndExpand" Clicked="OnButtonClickedCapture"/>
+    
+    
+    <Entry  Placeholder="Barcode" x:Name="BarCode" Text="{Binding BarCode}"/>
+    <Entry  Placeholder="Product ID" x:Name="ProductID" Text="{Binding ProductID}"/>
+    <Entry  Placeholder="Description" x:Name="Description" Text="{Binding Description}"/>
+
+    <DatePicker
+                    x:Name="pickerNotificationDate"
+                    Date="{Binding ExportDate}"/>
+    <TimePicker  x:Name="pickerNotificationTime"
+                    Time="{Binding PropertyTime}"/>
+
+    <Label x:Name="lbResult"/>
+
+
+    <Button Text="Submit"
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand" Clicked="OnButtonClicked"/>
+
+
+   
+
+  </StackLayout>
+
+
+</ContentPage>
