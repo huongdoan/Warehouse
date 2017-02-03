@@ -33,16 +33,30 @@ namespace SuiteXamarin
 
         async void OnButtonClickedCapture(object sender, EventArgs args)
         {
+            // Create our custom overlay
+            var customOverlay = new StackLayout
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand
+            };
+            var torch = new Button
+            {
+                Text = "Toggle Torch"
+            };
+
+            customOverlay.Children.Add(torch);
 
             //setup options
             var options = new MobileBarcodeScanningOptions
             {
+
                 AutoRotate = false,
-                UseFrontCameraIfAvailable = true,
+                UseFrontCameraIfAvailable = false,
                 TryHarder = true,
                 PossibleFormats = new List<ZXing.BarcodeFormat>
                 {
                    ZXing.BarcodeFormat.EAN_8, ZXing.BarcodeFormat.EAN_13
+                   //ZXing.BarcodeFormat.CODE_128, ZXing.BarcodeFormat.CODE_39
                 }
             };
 
@@ -53,8 +67,10 @@ namespace SuiteXamarin
                 DefaultOverlayBottomText = string.Empty,
                 DefaultOverlayShowFlashButton = true
             };
-
-
+            torch.Clicked += delegate
+            {
+                scanPage.ToggleTorch();
+            };
             scanPage.OnScanResult += (result) =>
             {
                 // Stop scanning
@@ -63,14 +79,14 @@ namespace SuiteXamarin
                 // Pop the page and show the result
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await Navigation.PopAsync();
+                    await Navigation.PopModalAsync();
                     await DisplayAlert("Scanned Barcode", result.Text, "OK");
                     model.BarCode = result.Text;
 
                 });
             };
             // Navigate to our scanner page
-           await Navigation.PushModalAsync(scanPage);
+            await Navigation.PushModalAsync(scanPage);
         }
     }
 }
